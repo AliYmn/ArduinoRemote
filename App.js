@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Image } from 'react-native';
-
+import Main from './Components';
 export default class App extends Component {
   constructor() {
     super();
@@ -29,12 +29,16 @@ export default class App extends Component {
         </View>
       </View>)
     return (
-      <View style={styles.MainContainer}>
-        <Text style={{ textAlign: 'center' }}> Splash Screen Example</Text>
-        {
-          (this.state.isVisible === true) ? Splash_Screen : null
-        }
-      </View>
+      <React.Fragment>
+        {this.state.isVisible === true ?
+          <View style={styles.MainContainer}>
+            {
+              (this.state.isVisible === true) ? Splash_Screen : null
+            }
+          </View>
+          : null}
+        {(this.state.isVisible === true) ? Splash_Screen : <Main />}
+      </React.Fragment>
     );
   }
 }
